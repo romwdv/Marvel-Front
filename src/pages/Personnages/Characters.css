@@ -1,0 +1,11 @@
+main .gallery {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-top: 50px;
+}
+
+h1 {
+  font-family: var(--font-heading);
+  font-size: 5rem;
+}

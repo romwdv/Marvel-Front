@@ -1,0 +1,45 @@
+.gallery article {
+  width: 100%;
+}
+
+article {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all ease-in-out 0.3s;
+  padding: 10px;
+  border-bottom: 1px solid #1f1f1f;
+  cursor: pointer;
+}
+
+article .left {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+article:hover {
+  background-color: rgba(52, 52, 60, 0.4);
+  margin-left: 15px;
+}
+article:hover h3 {
+  color: var(--color-red-marvel);
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+}
+
+.info h3 {
+  font-family: var(--font-heading);
+  font-size: 2.4rem;
+  transition: all ease-in-out 0.3s;
+}
+
+.subtitle {
+  display: flex;
+  gap: 10px;
+  color: var(--color-sub-heading);
+  font-family: var(--font-link);
+}

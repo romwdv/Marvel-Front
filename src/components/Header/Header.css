@@ -1,0 +1,51 @@
+header {
+  background-color: var(--color-deep-black);
+  height: 80px;
+  border-bottom: 1px solid #333;
+  position: sticky;
+  top: 0;
+  padding: 10px 0;
+  opacity: 0.95;
+  -webkit-backdrop-filter: blur(200px);
+  backdrop-filter: blur(200px);
+  z-index: 10000;
+}
+
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .container img {
+  width: 120px;
+}
+
+header .container nav {
+  display: flex;
+  gap: 35px;
+  font-size: 1.3rem;
+}
+
+header .container nav a {
+  position: relative;
+}
+
+header .container nav a.active {
+  color: var(--color-white-text);
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-red-marvel);
+  transition: width 0.4s ease-in-out;
+}
+
+nav a.active::after {
+  width: 100%;
+}

@@ -1,0 +1,50 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap");
+
+:root {
+  --color-deep-black: #0a0a0b;
+  --color-black-container: #101012;
+  --color-red-marvel: #e10f1e;
+  --color-white-text: #f4f4f5;
+  --color-sub-heading: #9a9aa3;
+
+  --font-heading: "Bebas Neue", sans-serif, system-ui;
+  --font-link: "JetBrains Mono", monospace;
+  --font-text: "Inter", sans-serif;
+}
+
+body {
+  background-color: var(--color-deep-black);
+
+  color: var(--color-white-text);
+  font-family: var(--font-text);
+  font-size: 16px;
+}
+
+a {
+  color: var(--color-sub-heading);
+  font-family: var(--font-link);
+  text-decoration: none;
+  transition: color 0.4s;
+}
+
+a:hover {
+  color: var(--color-white-text);
+}
+.card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block; /* ou flex, grid selon ton layout */
+  width: 100%; /* pour ne pas casser le calc() de la largeur */
+  height: 100%;
+}
+header .container {
+  background-color: var(--color-deep-black);
+}
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  background-color: var(--color-black-container);
+  padding: 20px;
+}
+
+/* Test */

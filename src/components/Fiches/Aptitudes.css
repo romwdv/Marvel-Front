@@ -1,0 +1,8 @@
+.aptitudes {
+  margin-top: 15px;
+}
+
+.aptitude-header span {
+  font-size: 0.95rem;
+  color: var(--color-sub-heading);
+}

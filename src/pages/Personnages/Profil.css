@@ -1,0 +1,152 @@
+.profil {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 70px;
+  margin-bottom: 60px;
+}
+.head {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #202024;
+  padding: 20px;
+  border-radius: 5px;
+  height: auto;
+}
+.profil h1 {
+  font-size: 10rem;
+  color: var(--color-white-text);
+  line-height: 1;
+  margin-bottom: 0;
+  margin-left: 5px;
+}
+
+.profil .title h2 {
+  margin-top: 2px;
+}
+
+.profil .title span {
+  font-size: 3rem;
+  color: var(--color-sub-heading);
+  font-family: var(--font-heading);
+}
+
+.profil .infos {
+  display: flex;
+  flex-direction: row;
+  gap: 56px;
+}
+
+.profil .infos p {
+  font-family: var(--font-link);
+}
+
+.icon-text {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.bio {
+  display: flex;
+  gap: 50px;
+  border: 1px solid #202024;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 50px;
+}
+
+.bio span,
+.comics span {
+  color: var(--color-red-marvel);
+  font-family: var(--font-link);
+  font-size: 1.2rem;
+}
+
+.bio h2,
+.comics h2 {
+  color: var(--color-white);
+  font-family: var(--font-heading);
+  font-size: 3.5rem;
+}
+
+.bio p {
+  font-size: 1.3rem;
+  line-height: 2.3rem;
+}
+
+.biographie {
+  margin-bottom: 70px;
+}
+
+.bio-left {
+  flex: 1;
+}
+
+.bio-right {
+  width: 500px;
+}
+.fiche {
+  border: 1px solid #202024;
+  background-color: #121216;
+  border-radius: 5px;
+  padding: 15px;
+}
+
+.fiche-info {
+  margin-bottom: 20px;
+  border-bottom: 1px solid #202024;
+  padding: 5px;
+}
+
+.fiche > div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.fiche > div > span {
+  color: #57585f;
+  font-size: 1rem;
+}
+
+.fiche > div > span:first-child {
+  margin-top: 15px;
+}
+
+.fiche > span {
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+.aptitude-row {
+  margin-bottom: 16px;
+}
+
+.aptitude-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 7px;
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.aptitude-bar-bg {
+  height: 3px;
+  background: #2a2a2a;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.aptitude-bar-fill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 1s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.comics {
+  border: 1px solid #202024;
+  padding: 20px;
+  border-radius: 5px;
+}
