@@ -5,6 +5,7 @@ import Header from "./components/Header/Header";
 import Comics from "./pages/Comics/Comics";
 import Characters from "./pages/Personnages/Characters";
 import Profil from "./pages/Personnages/Profil";
+import Comic from "./pages/Comics/Comic";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/personnages" element={<Characters />} />
         <Route path="/profil/:id" element={<Profil />} />
         <Route path="/comics" element={<Comics />} />
+        <Route path="/comic/:id" element={<Comic />} />
         <Route
           path="*"
           element={

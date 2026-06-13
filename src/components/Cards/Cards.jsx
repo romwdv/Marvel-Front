@@ -1,9 +1,10 @@
+import "./Cards.css";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import nameYears from "../../utils/NameYears";
 import cleanTitle from "../../utils/cleanTitle";
+import extractYears from "../../utils/extractYears";
 import axios from "axios";
-import "./Cards.css";
 import getImg from "../../utils/getImg";
 import countComics from "../../utils/countComics";
 import comicsNumber from "../../utils/comicsNumber";
@@ -23,7 +24,7 @@ const Cards = ({ endpoint }) => {
       setIsLoading(false);
     };
     fetchEndpoint();
-  }, []);
+  }, [endpoint]);
 
   if (isLoading) return <p>on load</p>;
 
@@ -31,7 +32,11 @@ const Cards = ({ endpoint }) => {
     <>
       {endpointResponse.results.map((item) => (
         <Link
-          to={`/profil/${item._id}`}
+          to={
+            endpoint === "characters"
+              ? `/profil/${item._id}`
+              : `/comic/${item._id}`
+          }
           className="card-link"
           state={item}
           key={item._id}
@@ -57,12 +62,12 @@ const Cards = ({ endpoint }) => {
                   <p>
                     {endpoint === "characters"
                       ? nameYears(item.name)
-                      : nameYears(item.title)}
+                      : extractYears(item.title)}
                   </p>
                   <p>
                     {endpoint === "characters" && countComics(item.comics) > 0
                       ? `/ # Apparitions : ${countComics(item.comics)}`
-                      : comicsNumber(item.title || "")}
+                      : comicsNumber(item.title, "/")}
                   </p>
                 </div>
               </div>

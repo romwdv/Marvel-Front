@@ -4,8 +4,10 @@
   --color-deep-black: #0a0a0b;
   --color-black-container: #101012;
   --color-red-marvel: #e10f1e;
+  --color-red-marvel-opacity: #e10f1dcf;
   --color-white-text: #f4f4f5;
   --color-sub-heading: #9a9aa3;
+  --box: #1e1e25;
 
   --font-heading: "Bebas Neue", sans-serif, system-ui;
   --font-link: "JetBrains Mono", monospace;
@@ -14,6 +16,9 @@
 
 body {
   background-color: var(--color-deep-black);
+  background-image: url(../../assets/24354.jpg);
+  background-size: cover;
+  background-position: center;
 
   color: var(--color-white-text);
   font-family: var(--font-text);

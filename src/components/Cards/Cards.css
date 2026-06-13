@@ -18,11 +18,11 @@ article .left {
   gap: 30px;
 }
 
-article:hover {
+.card-link article:hover {
   background-color: rgba(52, 52, 60, 0.4);
   margin-left: 15px;
 }
-article:hover h3 {
+.card-link article:hover h3 {
   color: var(--color-red-marvel);
 }
 

@@ -8,12 +8,24 @@
 }
 .head {
   display: flex;
-  justify-content: space-between;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  gap: 50px;
+  align-items: center;
   border: 1px solid #202024;
   padding: 20px;
   border-radius: 5px;
   height: auto;
 }
+.head-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.head-right img {
+  border-radius: 50%;
+}
+
 .profil h1 {
   font-size: 10rem;
   color: var(--color-white-text);
@@ -110,8 +122,8 @@
   font-size: 1rem;
 }
 
-.fiche > div > span:first-child {
-  margin-top: 15px;
+.fiche .fiche-info {
+  margin-top: 20px;
 }
 
 .fiche > span {
@@ -149,4 +161,19 @@
   border: 1px solid #202024;
   padding: 20px;
   border-radius: 5px;
+}
+
+.comics h2 {
+  margin-bottom: 20px;
+}
+
+.comics-cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.comics-cards article {
+  width: calc((100% - 60px) / 4);
 }

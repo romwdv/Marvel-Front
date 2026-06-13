@@ -1,6 +1,6 @@
 header {
   background-color: var(--color-deep-black);
-  height: 80px;
+  height: auto;
   border-bottom: 1px solid #333;
   position: sticky;
   top: 0;

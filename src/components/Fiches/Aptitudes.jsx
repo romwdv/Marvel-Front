@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import { useState } from "react";
 import "./Aptitudes.css";
 const Aptitudes = () => {
   const aptitudes = [
@@ -11,7 +11,7 @@ const Aptitudes = () => {
     "Vitesse",
   ];
 
-  const scores = useMemo(
+  const [scores] = useState(
     () =>
       aptitudes.map((aptitude) => ({
         label: aptitude,
