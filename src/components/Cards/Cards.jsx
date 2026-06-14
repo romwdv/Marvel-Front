@@ -1,7 +1,7 @@
 import "./Cards.css";
 import { useState, useEffect } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import nameYears from "../../utils/NameYears";
+import nameYears from "../../utils/nameYears";
 import cleanTitle from "../../utils/cleanTitle";
 import extractYears from "../../utils/extractYears";
 import axios from "axios";
@@ -15,7 +15,8 @@ import preloadImages from "../../utils/preloadImages";
 import { useUser } from "../../context/UserContext";
 
 const Cards = ({ endpoint }) => {
-  const { token, favorites, addFavorite, removeFavorite, openModal } = useUser();
+  const { token, favorites, addFavorite, removeFavorite, openModal } =
+    useUser();
   const [endpointResponse, setEndpointResponse] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [searchParams, setSearchParams] = useSearchParams();
