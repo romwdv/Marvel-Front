@@ -75,7 +75,7 @@ nav a.active::after {
   border: 1px solid var(--color-red-marvel);
   color: var(--color-red-marvel);
   font-family: var(--font-link);
-  font-size: 0.72rem;
+  font-size: 0.98rem;
   padding: 6px 14px;
   border-radius: 4px;
   cursor: pointer;

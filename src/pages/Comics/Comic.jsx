@@ -1,7 +1,7 @@
 import "./Comic.css";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { useUser } from "../../context/UserContext";
 import cleanTitle from "../../utils/cleanTitle";
 import extractYear from "../../utils/nameYears";
@@ -22,8 +22,17 @@ const Comic = () => {
   const { state } = useLocation();
   const [item, setItem] = useState(state?.item || null);
   const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
 
   const isFav = item ? favorites.some((f) => f.marvelId === item._id) : false;
+
+  const handleBack = () => {
+    if (window.history.state && window.history.state.idx > 0) {
+      navigate(-1);
+    } else {
+      navigate("/"); // ou une route par défaut
+    }
+  };
 
   const handleFavorite = () => {
     if (!token) {
@@ -59,6 +68,9 @@ const Comic = () => {
   if (isLoading) return <Loader label="Chargement du comic" />;
   return (
     <main className="container">
+      <button className="back" onClick={handleBack}>
+        &#x2190; Retour
+      </button>
       <div className="comic">
         <div className="head">
           <div className="head-left">

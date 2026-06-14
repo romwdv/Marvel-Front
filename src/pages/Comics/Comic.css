@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
-  margin-top: 70px;
+  margin-top: 30px;
   margin-bottom: 60px;
 }
 .head {
@@ -48,6 +48,23 @@
 
 .comic .infos p {
   font-family: var(--font-link);
+}
+
+.back {
+  background: none;
+  margin: 15px 0 0 15px;
+  border: 1px solid var(--color-red-marvel);
+  color: var(--color-red-marvel);
+  font-family: var(--font-link);
+  font-size: 1rem;
+  padding: 6px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
 }
 
 @media (max-width: 920px) {
