@@ -39,6 +39,3 @@ footer section {
 footer p {
   font-family: var(--font-link);
 }
-footer p:not(.footer-sub) {
-  font-size: 1.1rem;
-}
