@@ -26,16 +26,7 @@ function AppInner() {
             <Route path="/comics" element={<Comics />} />
             <Route path="/comic/:id" element={<Comic />} />
             <Route path="/favoris" element={<Favoris />} />
-            <Route
-              path="*"
-              element={
-                <main>
-                  <div className="container">
-                    Vous êtes perdu dans le Multiver !
-                  </div>
-                </main>
-              }
-            />
+            <Route path="*" element={<Home />} />
           </Routes>
         </div>
         <Footer />
