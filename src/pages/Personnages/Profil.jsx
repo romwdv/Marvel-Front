@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import { useUser } from "../../context/UserContext";
 import cleanTitle from "../../utils/cleanTitle";
-import nameYears from "../../utils/NameYears";
+import nameYears from "../../utils/nameYears";
 import { IoStarSharp } from "react-icons/io5";
 import { MdOutlineFavorite } from "react-icons/md";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
