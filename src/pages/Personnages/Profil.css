@@ -22,7 +22,7 @@
   flex-direction: column;
 }
 
-.head-right img {
+.img-profil {
   border-radius: 50%;
 }
 
@@ -169,7 +169,7 @@
 
 .comics-cards {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 20px;
   flex-wrap: wrap;
 }

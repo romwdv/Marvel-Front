@@ -15,6 +15,7 @@
 .comic-card-center {
   width: 100%;
   padding: 10px;
+  min-height: 45px;
   font-family: var(--font-heading);
   background-color: var(--box);
   font-size: 1.8rem;

@@ -5,26 +5,17 @@ import portrait_uncanny from "../assets/portrait_uncanny.png";
 const notFoundImg =
   "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available";
 
-const getImg = (item, size) => {
-  let imgNotFound = "";
-
-  switch (size) {
-    case "standard_medium":
-      imgNotFound = standard_medium;
-      break;
-    case "standard_fantastic":
-      imgNotFound = standard_fantastic;
-      break;
-    case "portrait_uncanny":
-      imgNotFound = portrait_uncanny;
-      break;
-    default:
-      imgNotFound = standard_medium;
-      break;
+const getImg = (item, size = "standard_medium") => {
+  if (!item.thumbnail || item.thumbnail.path === notFoundImg) {
+    switch (size) {
+      case "standard_fantastic":
+        return standard_fantastic;
+      case "portrait_uncanny":
+        return portrait_uncanny;
+      default:
+        return standard_medium;
+    }
   }
-
-  if (!item.thumbnail || item.thumbnail.path === notFoundImg)
-    return imgNotFound;
   return `${item.thumbnail.path}/${size}.${item.thumbnail.extension}`;
 };
 

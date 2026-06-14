@@ -2,33 +2,61 @@ import "./Comic.css";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams, useLocation } from "react-router-dom";
+import { useUser } from "../../context/UserContext";
 import cleanTitle from "../../utils/cleanTitle";
 import extractYear from "../../utils/NameYears";
 import { IoStarSharp } from "react-icons/io5";
+import { MdOutlineFavorite } from "react-icons/md";
+import { MdOutlineFavoriteBorder } from "react-icons/md";
 import getImg from "../../utils/getImg";
 import randomNumber from "../../utils/randomNumber";
 import ComicsNumber from "../../utils/comicsNumber";
+import Loader from "../../components/Loader/Loader";
+import preloadImages from "../../utils/preloadImages";
 
 const Comic = () => {
+  const { token, favorites, addFavorite, removeFavorite, openModal } =
+    useUser();
   const rate = randomNumber();
   const { id } = useParams();
   const { state } = useLocation();
   const [item, setItem] = useState(state?.item || null);
-  const [isLoading, setIsLoading] = useState(!state?.item);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const isFav = item ? favorites.some((f) => f.marvelId === item._id) : false;
+
+  const handleFavorite = () => {
+    if (!token) {
+      openModal();
+      return;
+    }
+    if (isFav) {
+      removeFavorite(item._id);
+    } else {
+      addFavorite({
+        marvelId: item._id,
+        type: "comic",
+        name: item.title,
+        thumbnailPath: item.thumbnail?.path,
+        thumbnailExt: item.thumbnail?.extension,
+      });
+    }
+  };
 
   useEffect(() => {
-    if (state?.item) return;
     const fetchEndpoint = async () => {
-      const response = await axios.get(
-        `${import.meta.env.VITE_API_URL}/comic/${id}`,
-      );
-      setItem(response.data);
+      setIsLoading(true);
+      const data = state?.item
+        ? state.item
+        : (await axios.get(`${import.meta.env.VITE_API_URL}/comic/${id}`)).data;
+      await preloadImages(getImg(data, "portrait_uncanny"));
+      setItem(data);
       setIsLoading(false);
     };
     fetchEndpoint();
-  }, [id]);
+  }, [id, state?.item]);
 
-  if (isLoading) return <p>on load</p>;
+  if (isLoading) return <Loader label="Chargement du comic" />;
   return (
     <main className="container">
       <div className="comic">
@@ -41,11 +69,29 @@ const Comic = () => {
               <p className="icon-text">
                 <IoStarSharp color="e10f1e" /> {rate}
               </p>
-              <p>Actif</p>
+              <p>
+                {!isNaN(extractYear(item.title)) ? extractYear(item.title) : ""}
+              </p>
+              <p>{ComicsNumber(item.title) ? ComicsNumber(item.title) : ""} </p>
+              <p
+                className="icon-text"
+                onClick={handleFavorite}
+                style={{ cursor: "pointer" }}
+              >
+                {isFav ? (
+                  <>
+                    <MdOutlineFavorite color="#e10f1e" /> Retirer des favoris
+                  </>
+                ) : (
+                  <>
+                    <MdOutlineFavoriteBorder color="#fff" /> Ajouter aux favoris
+                  </>
+                )}
+              </p>
             </section>
           </div>
-          <div className="head-right">
-            <img src={getImg(item, "standard_fantastic")} alt={item.title} />
+          <div className="head-right-comics">
+            <img src={getImg(item, "portrait_uncanny")} alt={item.title} />
           </div>
         </div>
       </div>
@@ -63,14 +109,16 @@ const Comic = () => {
             <div className="fiche-info">
               <span>ANNÉE</span>
               <span>
-                {item.name !== extractYear(item.title)
+                {!isNaN(extractYear(item.title))
                   ? extractYear(item.title)
-                  : "Identitée inconnue"}
+                  : "-"}
               </span>
             </div>
             <div className="fiche-info">
               <span>NUMÉRO</span>
-              <span>{ComicsNumber(item.title)}</span>
+              <span>
+                {ComicsNumber(item.title) ? ComicsNumber(item.title) : "-"}
+              </span>
             </div>
             <div className="fiche-info">
               <span>NOTES</span>

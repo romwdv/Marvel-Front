@@ -1,6 +1,11 @@
 import "./Home.css";
+import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../../context/UserContext";
 
 const Home = () => {
+  const { token, openModal } = useContext(UserContext);
+
   return (
     <main className="container home">
       <div className="landing">
@@ -12,8 +17,14 @@ const Home = () => {
           </h2>
         </div>
         <div className="cta">
-          <button className="explore">&rarr; Explorer la base</button>
-          <button className="connect">Se connecter</button>
+          <Link to={"/personnages"}>
+            <button className="explore">&rarr; Explorer la base</button>
+          </Link>
+          {!token && (
+            <button className="connect" onClick={openModal}>
+              Se connecter
+            </button>
+          )}
         </div>
       </div>
     </main>

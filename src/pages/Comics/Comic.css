@@ -22,10 +22,6 @@
   flex-direction: column;
 }
 
-.head-right img {
-  border-radius: 50%;
-}
-
 .comic h1 {
   font-size: 6rem;
   color: var(--color-white-text);
@@ -52,8 +48,4 @@
 
 .comic .infos p {
   font-family: var(--font-link);
-}
-
-.head-right img {
-  border-radius: 1%;
 }

@@ -6,8 +6,12 @@ import Comics from "./pages/Comics/Comics";
 import Characters from "./pages/Personnages/Characters";
 import Profil from "./pages/Personnages/Profil";
 import Comic from "./pages/Comics/Comic";
+import { UserProvider, UserContext } from "./context/UserContext";
+import AuthModal from "./components/Auth/AuthModal";
+import { useContext } from "react";
 
-function App() {
+function AppInner() {
+  const { isModalOpen, closeModal } = useContext(UserContext);
   return (
     <BrowserRouter>
       <Header />
@@ -28,7 +32,16 @@ function App() {
           }
         />
       </Routes>
+      {isModalOpen && <AuthModal onClose={closeModal} />}
     </BrowserRouter>
+  );
+}
+
+function App() {
+  return (
+    <UserProvider>
+      <AppInner />
+    </UserProvider>
   );
 }
 

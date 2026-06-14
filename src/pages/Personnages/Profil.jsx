@@ -2,34 +2,63 @@ import "./Profil.css";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams, useLocation } from "react-router-dom";
+import { useUser } from "../../context/UserContext";
 import cleanTitle from "../../utils/cleanTitle";
 import nameYears from "../../utils/NameYears";
 import { IoStarSharp } from "react-icons/io5";
+import { MdOutlineFavorite } from "react-icons/md";
+import { MdOutlineFavoriteBorder } from "react-icons/md";
 import getImg from "../../utils/getImg";
 import countComics from "../../utils/countComics";
 import randomNumber from "../../utils/randomNumber";
 import Aptitudes from "../../components/Fiches/Aptitudes";
 import ProfilComics from "../../components/Cards/ProfilComics";
+import Loader from "../../components/Loader/Loader";
+import preloadImages from "../../utils/preloadImages";
 
 const Profil = () => {
+  const { token, favorites, addFavorite, removeFavorite, openModal } =
+    useUser();
   const rate = randomNumber();
   const { id } = useParams();
   const { state } = useLocation();
   const [item, setItem] = useState(state?.item || null);
-  const [isLoading, setIsLoading] = useState(!state?.item);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const isFav = item ? favorites.some((f) => f.marvelId === item._id) : false;
+
+  const handleFavorite = () => {
+    if (!token) {
+      openModal();
+      return;
+    }
+    if (isFav) {
+      removeFavorite(item._id);
+    } else {
+      addFavorite({
+        marvelId: item._id,
+        type: "character",
+        name: item.name,
+        thumbnailPath: item.thumbnail?.path,
+        thumbnailExt: item.thumbnail?.extension,
+      });
+    }
+  };
   useEffect(() => {
-    if (state?.item) return;
     const fetchEndpoint = async () => {
-      const response = await axios.get(
-        `${import.meta.env.VITE_API_URL}/character/${id}`,
-      );
-      setItem(response.data);
+      setIsLoading(true);
+      const data = state?.item
+        ? state.item
+        : (await axios.get(`${import.meta.env.VITE_API_URL}/character/${id}`))
+            .data;
+      await preloadImages(getImg(data, "standard_fantastic"));
+      setItem(data);
       setIsLoading(false);
     };
     fetchEndpoint();
-  }, [id]);
+  }, [id, state?.item]);
 
-  if (isLoading) return <p>on load</p>;
+  if (isLoading) return <Loader label="Chargement du profil" />;
 
   return (
     <main className="container">
@@ -47,10 +76,29 @@ const Profil = () => {
               <p>
                 {countComics(item.comics) > 0 && `#${countComics(item.comics)}`}
               </p>
+              <p
+                className="icon-text"
+                onClick={handleFavorite}
+                style={{ cursor: "pointer" }}
+              >
+                {isFav ? (
+                  <>
+                    <MdOutlineFavorite color="#e10f1e" /> Retirer des favoris
+                  </>
+                ) : (
+                  <>
+                    <MdOutlineFavoriteBorder color="#fff" /> Ajouter aux favoris
+                  </>
+                )}
+              </p>
             </section>
           </div>
           <div className="head-right">
-            <img src={getImg(item, "standard_fantastic")} alt={item.name} />
+            <img
+              src={getImg(item, "standard_fantastic")}
+              alt={item.name}
+              className="img-profil"
+            />
           </div>
         </div>
       </div>

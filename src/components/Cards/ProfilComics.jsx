@@ -6,6 +6,8 @@ import axios from "axios";
 import getImg from "../../utils/getImg";
 import comicsNumber from "../../utils/comicsNumber";
 import ancient from "../../assets/ancient.png";
+import Loader from "../Loader/Loader";
+import preloadImages from "../../utils/preloadImages";
 
 const ProfilComics = ({ CharacID }) => {
   const [endpointResponse, setEndpointResponse] = useState([]);
@@ -13,17 +15,20 @@ const ProfilComics = ({ CharacID }) => {
 
   useEffect(() => {
     const fetchEndpoint = async () => {
+      setIsLoading(true);
       const response = await axios.get(
         `${import.meta.env.VITE_API_URL}/comics/${CharacID}`,
       );
-      console.log("response =>", response.data);
+      await preloadImages(
+        response.data.comics.map((item) => getImg(item, "portrait_uncanny")),
+      );
       setEndpointResponse(response.data);
       setIsLoading(false);
     };
     fetchEndpoint();
-  }, []);
-  console.log("profilCards => ", endpointResponse);
-  if (isLoading) return <p>on load</p>;
+  }, [CharacID]);
+
+  if (isLoading) return <Loader label="Chargement des comics" />;
 
   return (
     <>
