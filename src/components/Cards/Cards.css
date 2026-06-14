@@ -49,7 +49,14 @@ article .left {
   align-items: center;
   justify-content: center;
   gap: 20px;
-  padding: 30px 0;
+  padding: 24px 0;
+  width: 100%;
+  border-top: 1px solid #1f1f1f;
+}
+
+.pagination:last-child {
+  border-top: none;
+  border-bottom: 1px solid #1f1f1f;
 }
 
 .pagination-btn {

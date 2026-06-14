@@ -16,7 +16,7 @@ const Header = () => {
         <nav>
           <NavLink to="/personnages">PERSONNAGES</NavLink>
           <NavLink to="/comics">COMICS</NavLink>
-          <NavLink to="">FAVORIS</NavLink>
+          <NavLink to="/favoris">FAVORIS</NavLink>
         </nav>
         <div className="header-auth">
           {token ? (

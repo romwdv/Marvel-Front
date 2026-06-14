@@ -1,8 +1,7 @@
 .search {
   position: relative;
   width: 100%;
-  max-width: 600px;
-  margin: 20px 0;
+  margin: 30px 0 10px;
 }
 
 .search-input {

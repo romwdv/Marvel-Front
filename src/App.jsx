@@ -8,30 +8,38 @@ import Profil from "./pages/Personnages/Profil";
 import Comic from "./pages/Comics/Comic";
 import { UserProvider, UserContext } from "./context/UserContext";
 import AuthModal from "./components/Auth/AuthModal";
+import Favoris from "./pages/Favoris/Favoris";
 import { useContext } from "react";
+import Footer from "./components/Footer/Footer";
 
 function AppInner() {
   const { isModalOpen, closeModal } = useContext(UserContext);
   return (
     <BrowserRouter>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/personnages" element={<Characters />} />
-        <Route path="/profil/:id" element={<Profil />} />
-        <Route path="/comics" element={<Comics />} />
-        <Route path="/comic/:id" element={<Comic />} />
-        <Route
-          path="*"
-          element={
-            <main>
-              <div className="container">
-                Vous êtes perdu dans le Multiver !
-              </div>
-            </main>
-          }
-        />
-      </Routes>
+      <div className="app-layout">
+        <Header />
+        <div className="app-content">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/personnages" element={<Characters />} />
+            <Route path="/profil/:id" element={<Profil />} />
+            <Route path="/comics" element={<Comics />} />
+            <Route path="/comic/:id" element={<Comic />} />
+            <Route path="/favoris" element={<Favoris />} />
+            <Route
+              path="*"
+              element={
+                <main>
+                  <div className="container">
+                    Vous êtes perdu dans le Multiver !
+                  </div>
+                </main>
+              }
+            />
+          </Routes>
+        </div>
+        <Footer />
+      </div>
       {isModalOpen && <AuthModal onClose={closeModal} />}
     </BrowserRouter>
   );

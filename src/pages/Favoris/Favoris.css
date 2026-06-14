@@ -1,0 +1,86 @@
+.favoris,
+.favoris-empty {
+  margin-top: 70px;
+  margin-bottom: 60px;
+}
+
+.favoris-label {
+  color: var(--color-red-marvel);
+  font-family: var(--font-link);
+  font-size: 1.2rem;
+  margin-bottom: 4px;
+}
+
+.favoris h1,
+.favoris-empty h1 {
+  font-family: var(--font-heading);
+  font-size: 8rem;
+  color: var(--color-white-text);
+  line-height: 1;
+  margin-bottom: 40px;
+}
+
+.favoris-section {
+  border: 1px solid #202024;
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.favoris-section > span {
+  color: var(--color-red-marvel);
+  font-family: var(--font-link);
+  font-size: 1.2rem;
+}
+
+.favoris-section > h2 {
+  color: var(--color-white-text);
+  font-family: var(--font-heading);
+  font-size: 3.5rem;
+  margin-bottom: 12px;
+}
+
+.favoris-list {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Empty / unauthenticated state */
+.favoris-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 60px 20px;
+  border: 1px solid #202024;
+  border-radius: 5px;
+}
+
+.favoris-desc {
+  color: var(--color-sub-heading);
+  font-size: 1.1rem;
+  max-width: 480px;
+  margin-bottom: 32px;
+  line-height: 1.8;
+}
+
+.favoris-cta {
+  display: inline-block;
+  border: 1px solid var(--color-red-marvel);
+  color: var(--color-red-marvel);
+  font-family: var(--font-link);
+  font-size: 0.85rem;
+  padding: 10px 24px;
+  border-radius: 4px;
+  cursor: pointer;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: none;
+  text-decoration: none;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.favoris-cta:hover {
+  background-color: var(--color-red-marvel);
+  color: var(--color-white-text);
+}

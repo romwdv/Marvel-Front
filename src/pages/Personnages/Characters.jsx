@@ -6,8 +6,8 @@ const Characters = () => {
   return (
     <main className="container">
       <h1>LES PERSONNAGES</h1>
-      <div className="gallery ">
-        <Search endpoint="characters" />
+      <Search endpoint="characters" />
+      <div className="gallery">
         <Cards endpoint="characters" />
       </div>
     </main>

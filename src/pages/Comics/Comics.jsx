@@ -6,8 +6,8 @@ const Comics = () => {
     <main>
       <div className="container">
         <h1>LES COMICS</h1>
+        <Search endpoint="comics" />
         <div className="gallery">
-          <Search endpoint="comics" />
           <Cards endpoint="comics" />
         </div>
       </div>
