@@ -49,3 +49,21 @@
 .comic .infos p {
   font-family: var(--font-link);
 }
+
+@media (max-width: 920px) {
+  .comics-cards article {
+    width: calc((100% - 20px) / 2);
+  }
+  .head-left h1 {
+    font-size: 4rem;
+    color: var(--color-white-text);
+    line-height: 1;
+    margin-bottom: 0;
+    margin-left: 5px;
+  }
+  .head .infos {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}

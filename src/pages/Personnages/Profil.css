@@ -177,3 +177,44 @@
 .comics-cards article {
   width: calc((100% - 60px) / 4);
 }
+
+@media (max-width: 1290px) {
+  .comics-cards article {
+    width: calc((100% - 40px) / 3);
+  }
+}
+@media (max-width: 1080px) {
+  .bio {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .bio-right {
+    width: 100%;
+  }
+}
+@media (max-width: 920px) {
+  .comics-cards article {
+    width: calc((100% - 20px) / 2);
+  }
+  .profil h1 {
+    font-size: 7rem;
+    color: var(--color-white-text);
+    line-height: 1;
+    margin-bottom: 0;
+    margin-left: 5px;
+  }
+  .profil .infos {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+@media (max-width: 780px) {
+  .comics-cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+}
