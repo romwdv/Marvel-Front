@@ -19,6 +19,7 @@ header .container {
 
 header .container img {
   width: 120px;
+  cursor: pointer;
 }
 .full-screen {
   display: flex;
